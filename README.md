@@ -11,6 +11,11 @@ ChatBot trả lời các câu hỏi của người dùng trong lĩnh vực y h�
 - Chức năng quản lý câu trả lời.
 - Chức năng tạo tài khoản, đăng nhập, quên mật khẩu.
 
+## V1.0.1
+1 vài chức năng được thêm vào
+- Chức năng cho phép người dùng chỉnh sửa thông tin tài khoản cá nhân.
+- Chức năng cho phép người dùng đổi mật khẩu.
+
 # Setup
 
 # Tác giả
