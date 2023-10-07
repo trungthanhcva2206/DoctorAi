@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #f9f9f9;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body.dark {
+	--light: #262635;
+	--grey: #323249;
+	--dark: #fff;
+}
+
+body {
+    background-color: var(--grey);
+	overflow-x: hidden;
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    z-index: 999;
+}
+
+nav .nav_main{
+    position: relative;
+    padding: 20px 16px;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    height: 72px;
+    display: flex;
+    align-items: center;
+}
+nav .nav_main .name a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+nav .nav_main .name a img{
+    width: 70px;
+    margin: auto;
+}
+
+
+main .board{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    align-items: center;
+    padding: 80px 24px;
+    margin: auto;
+}
+main .board .left_log{
+    padding-top: 32px;
+    width: 60%;
+}
+main .board .left_log span{
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgb(80, 80, 80);
+    margin-bottom: 40px;
+}
+main .board .left_log h1{
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: rgb(31, 31, 31);
+}
+main .board .left_log .img_left{
+    display: flex;
+}
+main .board .left_log .img_left img{
+    width: 500px;
+    height: 500px;
+}
+main .board .right_log{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 375px;
+    height: 550px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 32px;
+    filter: drop-shadow(rgba(129, 159, 204, 0.1) 0px 12px 24px);
+    border-radius: 16px;
+}
+main .board .right_log .chosse .chosse_inf{
+    margin: 72px auto 56px;
+    text-align: center;
+    color: rgb(31, 31, 31);
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+main .board .right_log .chosse .log button, 
+main .board .right_log .chosse .reg button{
+    border: none;
+    width: 100%;
+    max-width: 268px;
+    margin: auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 90px;
+    height: 44px;
+    padding: 0px 24px;
+    border-radius: 6px;
+    background: rgb(234, 234, 234);
+    border: 1px solid rgb(234, 234, 234);
+    color: rgb(80, 80, 80);
+    cursor: pointer;
+    margin-top: 20px;
+}
+main .board .right_log .chosse .reg button:hover,
+main .board .right_log .chosse .log button:hover{
+    background-color: var(--light-blue);
+}
+main .board .right_log .chosse .more{
+    color: rgb(59, 55, 55);
+    font-weight: 700;
+    margin: auto;
+    margin-top: 18px;
+    padding: 0px 24px;
+}
+main .board .right_log .chosse .more .face{
+    cursor: pointer;
+    background-color: #1877F2;
+    padding: 8px 11px;
+    border-radius: 100%;
+    color: #fff;
+}
+main .board .right_log .chosse .more .gg{
+    cursor: pointer;
+    background-color: #4285F4;
+    padding: 8px ;
+    border-radius: 100%;
+    color: #fff;
+}
+/* main .board .right_log .login{
+    display: none;
+} */
+main .board .right_log .login .back{
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 90px;
+    height: 25px;
+}
+main .board .right_log .login .login_inf{
+    margin: 48px 0px 40px;
+    color: rgb(31, 31, 31);
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+main .board .right_log .login .acc{
+    width: 100%;
+}
+main .board .right_log .login .inf{
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgb(31, 31, 31);
+    margin-bottom: 4px;
+}
+main .board .right_log .login .inp{
+    display: flex;
+    align-items: center;
+}
+main .board .right_log .login .inp .sua{
+    min-height: 42px;
+    display: flex;
+    flex: 1 1 0%;
+    align-items: center;
+    background-color: rgb(255, 247, 242);
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 6px;
+    padding: 0px 12px;
+}
+main .board .right_log .login .inp .sua input{
+    padding: 12px 0px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgb(31, 31, 31);
+    line-height: 1.5;
+    background: none;
+    border: none;
+    outline: none;
+}
+main .board .right_log .login .pass{
+    margin-top: 30px;
+}
+main .board .right_log .login .sub{
+    margin-top: 40px;
+}
+main .board .right_log .login .sub .submit_form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 90px;
+    height: 44px;
+    padding: 0px 24px;
+    border-radius: 6px;
+    background: rgb(255, 104, 0);
+    border: 1px solid rgb(255, 104, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+
+
+
+main .board .right_log .register{
+    display: none;
+}
+main .board .right_log .register .back{
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 90px;
+    height: 25px;
+}
+main .board .right_log .register .register_inf{
+    margin: 28px 0px 20px;
+    color: rgb(31, 31, 31);
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+main .board .right_log .register .name_n{
+    width: 100%;
+    display: flex;
+}
+main .board .right_log .register .inf_n{
+    width: 48%;
+}
+main .board .right_log .register .second{
+    margin-left: 12px;
+}
+main .board .right_log .register .inf_m{
+    width: 100%;
+}
+main .board .right_log .register .inf{
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgb(31, 31, 31);
+    margin-bottom: 2px;
+}
+main .board .right_log .register .inp{
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+main .board .right_log .register .inp .sua{
+    min-height: 32px;
+    display: flex;
+    flex: 1 1 0%;
+    align-items: center;
+    background-color: rgb(255, 247, 242);
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 6px;
+    padding: 0px 12px;
+}
+main .board .right_log .register .inp .sua input{
+    padding: 8px 0px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgb(31, 31, 31);
+    line-height: 1.5;
+    background: none;
+    border: none;
+    outline: none;
+}
+main .board .right_log .register .pass{
+    margin-top: 30px;
+}
+main .board .right_log .register .sub{
+    margin-top: 40px;
+}
+main .board .right_log .register .sub .submit_form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 90px;
+    height: 44px;
+    padding: 0px 24px;
+    border-radius: 6px;
+    background: rgb(217, 215, 215);
+    border: 1px solid rgb(244, 244, 244);
+    color: rgb(189, 188, 188);
+}
+
+
+
+
+

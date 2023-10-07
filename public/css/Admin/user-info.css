@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+    --khaki: #F0E68C;
+    --khakiDark: #BDB76B;
+    --darkStaleGray: #2F4F4F;
+    --white: #FFFFFF;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body.dark {
+	--light: #262635;
+	--grey: #323249;
+	--dark: #fff;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+/* Nav */
+nav{
+    position: fixed;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    z-index: 999;
+}
+
+nav .nav_main{
+	color: var(--dark);
+	font-size: 18px;
+	position: relative;
+	align-items: center;
+	grid-gap: 24px;
+    position: relative;
+    padding: 20px 16px;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    height: 72px;
+    display: flex;
+    align-items: center;
+}
+nav .nav_main .name{
+	flex: auto;
+}
+nav .nav_main .name a{
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 20px;
+}
+nav .nav_main .right_name{
+	display: flex;
+}
+nav .nav_main .right_name button{
+    border: none;
+	color: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+nav .nav_main .right_name .profile{
+	margin-left: 10px;
+}
+nav .nav_main .right_name .profile img {
+	transition: transform 3s;
+	width: 36px;
+	height: 36px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+nav .nav_main .right_name .go_chat{
+	padding-top: 10px;
+	margin-left: 10px;
+}
+nav .nav_main .right_name .go_chat a{
+	font-size: 18px;
+	top: 10px;
+	color: var(--dark);
+	border: 1px solid;
+	padding: 10px;
+}
+nav .nav_main .right_name .go_chat a:hover{
+	text-decoration: underline;
+}
+nav .nav_main .right_name .chosse{
+	padding-top: 10px;
+}
+nav .nav_main .right_name .chosse a{
+	font-size: 18px;
+	color: var(--dark);
+	padding: 10px;
+}
+nav .nav_main .right_name .chosse a:hover{
+	text-decoration: underline;
+}
+
+nav .nav_main .right_name .dropdown {
+	overflow: hidden;
+    position: absolute;
+    top: 73px;
+	width: 360px;
+	max-height: 0px;
+	transition: max-height 0.5s;
+	background-color: #fff;
+    right: 0;
+}
+nav .nav_main .right_name .dropdown.open{
+	max-height: 400px;
+}
+nav .nav_main .right_name .dropdown .drop_ab{
+	display: flex;
+}
+nav .nav_main .right_name .dropdown .drop_ab .img_ab{
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 30px;
+	width: 150px;
+	height: 150px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .img_ab img{
+	transition: transform 3s;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	overflow: hidden;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab{
+	width: 100%;
+    padding-top: 10px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab div{
+	width: 100%;
+	margin-top: 10px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .name_ab{
+	text-align: center;
+	font-size: 18px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab{
+	width: 100%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab .prf{
+	color: #342E37;
+	width: 100%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab span{
+	text-align: center;
+	margin-left: 8px;
+	font-size: 16px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab .bx{
+	padding: 8px;
+	font-size: 18px;
+	background-color: #d0cccc;
+	border-radius: 50%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab .nx{
+	margin-left: 16px;
+}
+
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .profile_ab a:hover span{
+	font-weight: bold;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab .bx{
+    padding: 8px;
+	font-size: 18px;
+	color: var(--red);
+	font-weight: bold;
+	background-color: #e4dcdc;
+	border-radius: 50%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab{
+	width: 100%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab .lgf{
+	color: #342E37;
+	width: 100%;
+
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab span{
+	text-align: center;
+	margin-left: 8px;
+	font-size: 16px;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab .bx{
+	padding: 8px;
+	font-size: 18px;
+	background-color: #d0cccc;
+	border-radius: 50%;
+}
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab .nx{
+	margin-left: 90px;
+}
+
+nav .nav_main .right_name .dropdown .drop_ab .list_ab .logout_ab a:hover span{
+	font-weight: bold;
+}
+main{
+    height: 100vh;
+	background-color: var(--white);
+	padding: 30px;
+	margin-bottom: 40px;
+	box-shadow: 0 0 2px #808080;
+	position: relative;
+	z-index: 100;
+}
+
+main h2 {
+    color: var(--darkStaleGray);
+    font-size: 1.5 em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+	font-weight: bold;
+}
+
+main .container{
+	width: 960px;
+	margin: 0 auto;
+}
+main .active{
+	background-color: var(--darkStaleGray) !important;
+	color: var(--khaki) !important;
+}
+
+main .account-page{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+main .account-page .profile{
+	width: 30%;
+}
+main .account-page .profile .profile-img{
+	width: 140px;
+	height: 160px;
+	margin: 0 auto;
+	margin-bottom: 60px;
+	overflow: none;
+	text-align: center;
+}
+main .account-page .profile .profile-img img{
+	width: 100%;
+	height: 140px;
+	border-radius: 50%;
+	border: 1px solid rgba(236, 240, 241,0.3);
+	object-fit: cover;
+	box-shadow: 0px 0px 8px #9e9e9e;
+}
+main .account-page .profile .profile-img h2{
+	color: var(--darkStaleGray);
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+main .account-page .profile ul{
+	list-style: none;
+	padding: 10px;
+}
+main .account-page .profile ul li{
+	margin-bottom: 5px;
+}
+main .account-page .profile ul li a{
+	color: var(--darkStaleGray);
+	border: 1px solid rgba(236, 240, 241,0.3);
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: left;
+	padding: 5px 8px;
+	display: block;
+}
+main .account-page .profile ul li a:hover{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+}
+main .account-page .profile ul li a span{
+	float: right;
+}
+
+main .account-page .account-detail{
+	width: 60%;
+}
+main .account-page .account-detail input[type="submit"]{
+	background-color: var(--khaki);
+	color: var(--darkStaleGray);
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 8px;
+	margin-top: 20px;
+	display: block;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+main .account-page .account-detail input[type="submit"]:hover{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+}
+
+main .account-page .account-detail table{
+	border: 1px solid #eee;
+	width: 100%;
+}
+
+main .account-page .account-detail table th,
+main .account-page .account-detail table td{
+	padding: 8px;
+	text-align: center;
+	border: 1px solid #eee;
+}
+
+main .breadcrumb{
+	background-color: var(--khaki);
+	padding: 10px 0;
+	margin-bottom: 25px;
+	margin-top: 60px;
+}
+main .breadcrumb ul{
+	display: flex;
+	justify-content: flex-start;
+	list-style: none;
+}
+main .breadcrumb ul li{
+	padding: 0 10px;
+}
+main .breadcrumb ul li a{
+	color: var(--darkStaleGray);
+	text-decoration: none;
+}
+
+main .checkout-page{
+	/*max-height: 680px;*/
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+main form.checkout-form .form-group{
+	margin: 10px 5px;
+	width: calc(100% - 10px);
+}
+main form.checkout-form label{
+	color: var(--darkStaleGray);
+	display: block;
+	margin-bottom: 6px;
+}
+main form.checkout-form .form-group input,
+main form.checkout-form .form-group select,
+main form.checkout-form .form-group textarea{
+	width: 100%;
+	padding: 8px 5px
+}
+main form.checkout-form input:focus,
+main form.checkout-form select:focus,
+main form.checkout-form textarea:focus{
+	outline: 1px solid var(--darkStaleGray);
+}
+main form.checkout-form .form-inline{
+	display: flex;
+	justify-content: space-between;
+}
+main form.checkout-form .form-inline .form-group{
+	width: 48%;
+}
+
+main hr{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

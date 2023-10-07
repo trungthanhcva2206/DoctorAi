@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font-awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="{{asset('css/Client/login.css')}}">
+</head>
+<body>
+    <nav>
+        <div class="nav_main">
+            <div class="name">
+                <a href=""><img src="{{asset('img/logo.png')}}" alt=""></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Login -->
+    <main>
+        <div class="board">
+            <div class="left_log">
+                <div class="text_anim">
+                    <h1>Khỏe mạnh cùng AI bác sĩ</h1>
+                    <span>Tìm kiếm lời giải về vấn đề sức khỏe của bạn cùng chuyên gia</span>
+                </div>
+                <div class="img_left">
+                    <img src="{{asset('img/DocTor.png')}}" alt="">
+                </div>
+            </div>
+            <div class="right_log">
+                <!-- Chosse -->
+                <div class="chosse" id="chosse">
+                    <div class="chosse_inf">
+                        <span>Đăng nhập / Đăng ký</span>
+                    </div>
+                    <div class="log">
+                        <button>Đăng nhập tài khoản</button>
+                    </div>
+                    <div class="reg">
+                        <button>Đăng ký tài khoản</button>
+                    </div>
+                    <div class="more">
+                        Hoặc đăng nhập bằng: 
+                        <i class="face fa-brands fa-facebook-f"></i>
+                        <i class="gg fa-brands fa-google"></i>
+
+                    </div>
+                </div>
+
+                <!-- Login -->
+                <div class="login">
+                    <div class="back">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        <span>Trở lại</span>
+                    </div>
+                    <div class="login_inf">
+                        <span>Đăng nhập bằng tài khoản</span>
+                    </div>
+                    <form action="">
+                        <div class="acc">
+                            <div class="inf">Tài khoản</div>
+                            <div class="inp">
+                                <div class="sua" id="parentDiv">
+                                    <input class="input_form" type="text" id="log_emailInput" placeholder="Nhập tài khoản">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pass">
+                            <div class="inf">Mật khẩu</div>
+                            <div class="inp">
+                                <div class="sua">
+                                    <input class="input_form" type="password" id="log_passwordInput" placeholder="Nhập mật khẩu">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <button type="submit" class="submit_form" id="log_submitButton" disabled>
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Register -->
+                <div class="register">
+                    <div class="back">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        <span>Trở lại</span>
+                    </div>
+                    <div class="register_inf">
+                        <span>Đăng ký tài khoản</span>
+                    </div>
+                    <form action="">
+                        <div class="inf_m">
+                            <div class="inf">Tên:</div>
+                            <div class="inp">
+                                <div class="sua" id="parentDiv">
+                                    <input class="input_form" type="text" id="reg_name" placeholder="Nhập tên của bạn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inf_m">
+                            <div class="inf">Email:</div>
+                            <div class="inp">
+                                <div class="sua" id="parentDiv">
+                                    <input class="input_form" type="email" id="reg_email" placeholder="Nhập email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inf_m">
+                            <div class="inf">Tài khoản:</div>
+                            <div class="inp">
+                                <div class="sua" id="parentDiv">
+                                    <input class="input_form" type="text" id="reg_acc" placeholder="Nhập tài khoản">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inf_m">
+                            <div class="inf">Mật khẩu:</div>
+                            <div class="inp">
+                                <div class="sua">
+                                    <input class="input_form" type="password" id="reg_pass" placeholder="Nhập mật khẩu">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <button type="submit" class="submit_form" id="reg_submitButton" disabled>
+                                Đăng ký
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{{asset('js/login.jss')}}"></script>
+</body>
+</html>
