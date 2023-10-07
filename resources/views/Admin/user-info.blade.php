@@ -30,50 +30,39 @@
                         <img src="{{asset(auth()->user()->img_link)}}"
                             alt="Ảnh cá nhân" style="cursor: pointer">
                     </label>
-                    <form action="{{route('update.img',auth()->user()->id)}}" method="POST" enctype="multipart/form-data" id="upload-form">
-                        @method('PATCH')
+                    <form action="{{ route('upload.image') }}" method="POST" enctype="multipart/form-data" id="upload-form">
                         @csrf
                         <input type="file" name="img_link" id="img_upload" style="display: none;">
                     </form>
-                    <script>
-                        const imgUploadInput = document.getElementById('img_upload');
-                        imgUploadInput.addEventListener('change', () => {
-                            const formData = new FormData();
-                            formData.append('img_link', imgUploadInput.files[0]);
-
-                            axios.patch('/admin/update-img/{{ auth()->user()->id }}', formData)
-                                .then(response => {
-                                    console.log(response.data);
-                                   
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                    
-                                });
-                        });
-                    </script>
 
                     <h2>{{auth()->user()->name}}</h2>
                     <p>{{auth()->user()->email}}</p>
                 </div>
                 <ul>
-                    <li><a href="#" class="active">Tài khoản <span>></span></a></li>
-                    <li><a href="#">Đổi mật khẩu <span>></span></a></li>
-                    <li><a href="#">Đăng xuất <span>></span></a></li>
+                    <li><a href="/admin/user-info" class="active">Tài khoản <span>></span></a></li>
+                    <li><a href="/change-password">Đổi mật khẩu <span>></span></a></li>
+                    <li><form action="{{route('admin.logout')}}" method="POST">
+                            @csrf
+                            <button type = "submit" class="logout"><a href="#" class="logout">
+					<i class="fa-solid fa-right-from-bracket"></i>
+					<span class="text">Đăng xuất</span>
+				</a></button>
+                        </form></li>
                 </ul>
             </div>
             <div class="account-detail">
                 <h2>Tài khoản</h2>
                 <div class="billing-detail">
-                    <form class="checkout-form" action="#" method="POST">
+                    <form class="checkout-form" action="{{ route('user.info_update') }}" method="POST">
+                    @csrf
                         <div class="form-inline">
                             <div class="form-group">
                                 <label>Full Name</label>
-                                <input type="text" id="fname" name="fname" value="{{auth()->user()->name}}">
+                                <input type="text" id="fname" name="fname" value="{{$user->name}}">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" id="email" name="email" value="{{auth()->user()->email}}">
+                                <input type="text" id="email" name="email" value="{{$user->email}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,6 +77,11 @@
     </main>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    document.getElementById('img_upload').addEventListener('change', function () {
+        document.getElementById('upload-form').submit();
+    });
+</script>
 
 
 </html>

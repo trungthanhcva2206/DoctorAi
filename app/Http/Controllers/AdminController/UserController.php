@@ -9,6 +9,7 @@ use App\Models\Asked_question;
 use App\Models\Question;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -122,21 +123,30 @@ class UserController extends Controller
         }
     }
     
-    public function userInfo(){
-        return view('Admin.user-info');
-    }
-    public function updateImg($id,Request $request){
-        $messages = [
-            'img_link.image' => 'Hình ảnh không hợp lệ.',
-            'img_link.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif.',
-            'img_link.max' => 'Hình ảnh không được vượt quá 2MB.',
-        ];
+    // public function userInfo(){
+    //     return view('Admin.user-info');
+    // }
+    // public function updateInfo(Request $request){
+    //     $user = Auth::user();
+
+    //     $user->name = $request->input('fname');
+    //     $user->email = $request->input('email');
+    //     $user->save();
+
+    // return redirect()->back()->with('success', 'Profile updated successfully!');
+    // }
+    // public function updateImg($id,Request $request){
+    //     $messages = [
+    //         'img_link.image' => 'Hình ảnh không hợp lệ.',
+    //         'img_link.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif.',
+    //         'img_link.max' => 'Hình ảnh không được vượt quá 2MB.',
+    //     ];
     
-        $validatedData = $request->validate([
-            'img_link' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-        ], $messages);
-        $user = User::find($id);
-        $user->img_link = $request->img_link;
-        $user->save();
-    }
+    //     $validatedData = $request->validate([
+    //         'img_link' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+    //     ], $messages);
+    //     $user = User::find($id);
+    //     $user->img_link = $request->img_link;
+    //     $user->save();
+    // }
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChangePassWord;
+use App\Http\Controllers\UserInfo;
 use App\Http\Controllers\ClientController;
 
 /*
@@ -23,14 +25,19 @@ Route::get('/admin-reset-password/{token}', [AdminController\LoginController::cl
 Route::post('/admin-reset-password', [AdminController\LoginController::class, 'resetPasswordPost'])->name('reset.password.post');
 Route::post('/admin-logout', [AdminController\LoginController::class, 'logout'])->name('admin.logout');
 
+
+
 Route::get('/admin/user', [AdminController\UserController::class, 'showUser'])->middleware('auth')->name('show.user');
 Route::get('/admin/add-user', [AdminController\UserController::class, 'addUser'])->middleware('auth')->name('add.user');
 Route::post('/admin/add-user', [AdminController\UserController::class, 'addUserPost'])->middleware('auth')->name('add.user.post');
 Route::get('/admin/update-user/{id}', [AdminController\UserController::class, 'updateUser'])->middleware('auth')->name('update.user');
 Route::patch('/admin/update-user/{id}', [AdminController\UserController::class, 'updateUserPost'])->middleware('auth')->name('update.user.post');
 Route::delete('/admin/delete-user/{id}', [AdminController\UserController::class, 'deleteUser'])->middleware('auth')->name('delete.user');
-Route::get('/admin/user-info', [AdminController\UserController::class, 'userInfo'])->middleware('auth')->name('user.info');
-Route::patch('/admin/update-img/{id}', [AdminController\UserController::class, 'updateImg'])->middleware('auth')->name('update.img');
+Route::get('/admin/user-info', [UserInfo::class, 'userInfo'])->middleware('auth')->name('user.info');
+Route::POST('/updateProfile',[UserInfo::class,'updateInfo'])->middleware('auth')->name('user.info_update');
+Route::POST('/update-avatar', [UserInfo::class, 'updateAvatar'])->middleware('auth')->name('upload.image');
+Route::get('/change-password',[ChangePassWord::class,'showchange'])->middleware('auth')->name('user.changePass');
+Route::POST('/update-password',[ChangePassWord::class,'update'])->middleware('auth')->name('user.updatePass');
 
 
 
