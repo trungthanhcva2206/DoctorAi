@@ -1,0 +1,5 @@
+DoctorAi V1.0.00
+-Chức năng quản lý user.
+-Chức năng quản lý câu hỏi.
+-Chức năng quản lý câu trả lời.
+-Chức năng tạo tài khoản, đăng nhập, quên mật khẩu.
