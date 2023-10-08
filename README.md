@@ -16,6 +16,12 @@ ChatBot trả lời các câu hỏi của người dùng trong lĩnh vực y h�
 - Chức năng cho phép người dùng chỉnh sửa thông tin tài khoản cá nhân.
 - Chức năng cho phép người dùng đổi mật khẩu.
 
+## V1.1.00
+1 vài chức năng được thêm vào
+- Chức năng cho phép người dùng hỏi các chuyên gia về lĩnh vực y học.
+- Chức năng tự động gửi mail cho người dùng khi được hồi đáp của các chuyên gia.
+Update lại 1 vài giao diện ở phần Admin.
+
 # Setup
 
 - Tải ChatBot tại: https://github.com/trungthanhcva2206/DoctorAi.git.
