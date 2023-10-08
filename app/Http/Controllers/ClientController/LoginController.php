@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminController;
+namespace App\Http\Controllers\ClientController;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
-        return view('Admin.login');
+        return view('Client.login');
     }
     public function login(Request $request){
         Auth::logout();
@@ -33,8 +33,8 @@ class LoginController extends Controller
             
             $user = Auth::user();
             $role = $user->role;
-            if (in_array($role, [1, 2, 3])) {
-                return redirect('/admin/dashboard');
+            if ($role == 0) {
+                return redirect('/chat');
             } else {
                 Auth::logout();
                 return back()->withErrors([
@@ -53,10 +53,10 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('show.admin.login');
+        return redirect()->route('home');
     }
     public function forgetPassword(){
-        return view('Admin.forget-password');
+        return view('Client.forget-password');
     }
     public function forgetPasswordPost(Request $request){
         $request->validate([
@@ -67,15 +67,15 @@ class LoginController extends Controller
             'email' => $request->email,
             'token' => $token,
         ]);
-        Mail::send("Admin.sendMail",['token' => $token], function ($message) use ($request){
+        Mail::send("Client.sendMail01",['token' => $token], function ($message) use ($request){
             $message->to($request->email);
             $message->subject("Reset Password");
         });
 
-        return redirect()->route('show.admin.login');
+        return redirect()->route('show.client.login');
     }
     public function resetPassword($token){
-        return view('Admin.new-password',compact('token'));
+        return view('Client.new-password',compact('token'));
     }
     public function resetPasswordPost(Request $request){
         $request->validate([
@@ -99,8 +99,32 @@ class LoginController extends Controller
             "email" => $request->email,])
         ->delete();
 
-        return redirect()->route('show.admin.login')->with("success.reset-password","Đổi mật khẩu thành công");
-
+        return redirect()->route('show.client.login')->with("success.reset-password","Đổi mật khẩu thành công");
+    }
+    public function register(Request $request){
+        $messages = [
+            'name.required' => 'Vui lòng nhập tên.',
+            'email.required' => 'Vui lòng nhập địa chỉ email.',
+            'email.email' => 'Địa chỉ email không hợp lệ.',
+            'email.unique' => 'Địa chỉ email đã tồn tại.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+        ];
+    
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ], $messages);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = 0;
+        $user->img_link = "img/user.png";
+        $user->save();
+        return redirect()->route('show.client.login')->with('success.register', 'Đăng kí thành công');
     }
 
     

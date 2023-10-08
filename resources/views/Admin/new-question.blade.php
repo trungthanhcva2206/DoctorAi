@@ -9,6 +9,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="{{asset('css/Admin/ques.css')}}">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
 	<title>AdminHub</title>
 </head>
@@ -34,7 +35,7 @@
 					<div class="head">
 						<h3>Chưa trả lời</h3>
 					</div>
-					<table>
+					<table id="tb">
                         <thead>
 							<tr>
 								<th>User</th>
@@ -51,7 +52,7 @@
 									<p>{{$ques->user_info->name}}</p>
 								</td>
 								<td>{{$ques->created_at->format('d-m-Y')}}</td>
-								<td>{{$ques->question}}</td>
+								<td class="limit-text">{{$ques->question}}</td>
 								<td><span class="status">
                                     @if (!empty($ques->answer))
                                         Completed
@@ -59,14 +60,14 @@
                                         Waiting
                                     @endif
                                 </span></td>
-								<td>
+								<td class="dlt_mt" style="margin-bottom: 13px;">
 									<a href="{{route('answer',$ques->id)}}" title="Xem"><i class="fa-solid fa-eye"></i></a>
-									<a href="" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></i></a>
+									<a href="{{route('update.question',$ques->id)}}" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></i></a>
 									<form action="{{route('delete.question',$ques->id)}}" method = "POST">
 											@method('DELETE')
 											@csrf
-										<button type="submit"><i class="fa-solid fa-trash"></i></button>
-										</form>
+										<button class="delete_moithu" type="submit"><i class="fa-solid fa-trash"></i></button>
+									</form>
 								</td>
 							</tr>
                         @endforeach
@@ -76,10 +77,9 @@
     @endsection
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script>
-		$(document).ready(function () {
-    $('#tb').DataTable();
-		});
-	</script>
+	<script>$(document).ready(function () {
+    $.noConflict();
+    var table = $('#tb').DataTable();
+});</script>
 </body>
 </html>

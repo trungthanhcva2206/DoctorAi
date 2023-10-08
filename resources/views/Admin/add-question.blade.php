@@ -49,16 +49,15 @@
 				<div class="quest_view">
 					<form action="{{route('add.question.post')}}" method="POST">
 						@csrf
-						@error('question')                      
-                            <p class="text-danger">{{ $message }}</p>
-						@enderror
 						<div class="quest_inf">
 							<p>Câu hỏi:</p>
+							@error('question')                      
+                            <p class="text-danger">{{ $message }}</p>
+						    @enderror
 						</div>
 						<div class="quest">
 							<textarea name="question" id="" cols="30"
-								rows="10"></textarea>
-
+								rows="10" placeholder="Nhập câu hỏi"></textarea>
 						</div>
 						<div class="update">
 							<button type="submit">Thêm</button>

@@ -13,6 +13,7 @@
 	<title>AdminHub</title>
 </head>
 <body>
+    @if(auth()->user()->role == 1)
     @extends('Admin.sidebar')
 	@section('admin')
     <div class="head-title">
@@ -79,8 +80,15 @@
                         <p style ="color: red;">{{$message}}</p>
                         @enderror
                         <p>Ảnh đại diện:</p>
-                        <input type="file" name="img_link" id="fileInput" accept="image/*" onchange="previewImage()" >
-                        <img src="{{asset($user->img_link)}}" alt="" id="preview" style="max-width: 100px;">
+                        <div class="img_up">
+                            <div>
+                                <img src="{{asset($user->img_link)}}" alt="" id="preview" style="max-width: 100px;">
+                            </div>
+                            <div>
+                                <input type="file" name="img_link" id="fileInput" accept="image/*" onchange="previewImage()" >
+                            </div>
+                        </div>
+                        
                     </div>
                     <button type="submit">Sửa</button>
                 </form>
@@ -105,5 +113,10 @@
         }
 
     </script>
+    @else
+	<div class="thong_bao">
+	    <h1>Bạn không có quyền truy cập</h1>
+	</div>
+    @endif
 </body>
 </html>

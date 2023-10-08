@@ -13,6 +13,7 @@
 	<title>AdminHub</title>
 </head>
 <body>
+    @if(auth()->user()->role == 1)
     @extends('Admin.sidebar')
 	@section('admin')
     <div class="head-title">
@@ -58,7 +59,7 @@
                         @enderror
                         <p>Chức vụ :</p>
                         <select name="role" id="">
-                            <option value="1" selected>Quản lí</option>
+                            <option value="1" selected>Quản lý</option>
                             <option value="2">Chuyên gia</option>
                             <option value="3">Chuyên viên</option>
                         </select>
@@ -117,5 +118,10 @@
         }
 
     </script>
+    @else
+	<div class="thong_bao">
+	    <h1>Bạn không có quyền truy cập</h1>
+	</div>
+    @endif
 </body>
 </html>

@@ -15,6 +15,9 @@
 </head>
 
 <body>
+	@if(auth()->user()->role == 3)
+	<h1>Bạn không có quyền truy cập</h1>
+	@else
 	@extends('Admin.sidebar')
     @section('admin')
 
@@ -86,7 +89,7 @@
 		</div>
 	</div>
 	@endsection
-
+	@endif
 
 
 </body>

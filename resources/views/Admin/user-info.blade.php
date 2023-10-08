@@ -17,7 +17,12 @@
     <main>
         <div class="breadcrumb">
             <ul>
-                <li><a href="/admin/dashboard">Home</a></li>
+                <li>@if($user->role==0)
+                        <a href="/chat">Home</a>
+                        @else
+                        <a href="/admin/dashboard">Home</a>
+                        @endif
+                </li>
                 <li> / </li>
                 <li>Account</li>
             </ul>
@@ -41,7 +46,7 @@
                 <ul>
                     <li><a href="/admin/user-info" class="active">Tài khoản <span>></span></a></li>
                     <li><a href="/change-password">Đổi mật khẩu <span>></span></a></li>
-                    <li><form action="{{route('admin.logout')}}" method="POST">
+                    <li><form action="{{route('client.logout')}}" method="POST">
                             @csrf
                             <button type = "submit" class="logout"><a href="#" class="logout">
 					<i class="fa-solid fa-right-from-bracket"></i>

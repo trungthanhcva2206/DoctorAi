@@ -9,7 +9,6 @@ use App\Models\Asked_question;
 use App\Models\Question;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 
 
 
@@ -125,15 +124,6 @@ class UserController extends Controller
     
     // public function userInfo(){
     //     return view('Admin.user-info');
-    // }
-    // public function updateInfo(Request $request){
-    //     $user = Auth::user();
-
-    //     $user->name = $request->input('fname');
-    //     $user->email = $request->input('email');
-    //     $user->save();
-
-    // return redirect()->back()->with('success', 'Profile updated successfully!');
     // }
     // public function updateImg($id,Request $request){
     //     $messages = [

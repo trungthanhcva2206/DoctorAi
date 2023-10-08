@@ -32,7 +32,7 @@ menudash.forEach((mai, index) => {
 
 var tds = document.querySelectorAll('td.limit-text');
 tds.forEach(function(td) {
-	var maxCharacters = 25; // Số ký tự tối đa bạn muốn hiển thị
+	var maxCharacters = 30; // Số ký tự tối đa bạn muốn hiển thị
 	var text = td.textContent;
 	if (text.length > maxCharacters) {
 		td.textContent = text.slice(0, maxCharacters) + '...';
@@ -53,11 +53,11 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     // Lấy ID từ URL
     var url = window.location.href;
-    var match = url.match(/#\/([^?]+)/);
+    var match = url.match(/admin\/([^\/]+)/);
     if (match) {
-        var targetName = match[1]; // Lấy tên sau "#/"
+        var targetName = match[1];
 
-        var targetLi = document.querySelector('ul.side-menu li a[href="#/' + targetName + '"]').parentNode;
+        var targetLi = document.querySelector('ul.side-menu li a.' + targetName).parentNode;
         if (targetLi) {
             targetLi.classList.add("active");
         }
@@ -194,17 +194,13 @@ function newquest() {
 
 function answered() {
     var element = document.getElementById("local_dash");
-    element.innerHTML = "Answered";
+    element.innerHTML = "All question";
 }
 
-function quest() {
-    var element = document.getElementById("local_dash");
-    element.innerHTML = "Question";
-}
 
 function team() {
     var element = document.getElementById("local_dash");
-    element.innerHTML = "Team";
+    element.innerHTML = "User";
 }
 
 
@@ -215,19 +211,39 @@ filter:hue-rotate(${i*30}deg);
 ">${letters}</span>`
 ).join('');
 
+
 document.addEventListener("DOMContentLoaded", function() {
-	var spanElements = document.querySelectorAll("span.status");
-  
+	var spanElements = document.querySelectorAll("#content main .table-data .order table tr td .user_role");
+
 	for (var i = 0; i < spanElements.length; i++) {
-	  var span = spanElements[i];
-	  if (span.textContent === "Waiting") {
-		span.classList.add("pending");
-	  }
-	  if (span.textContent === "Completed") {
-		span.classList.add("completed");
-	  }
+		var span = spanElements[i];
+		if (span.textContent.trim() === "Quản lý") {
+			span.classList.add("ql");
+		}
+		if (span.textContent.trim() === "Chuyên gia") {
+			span.classList.add("cg");
+		}
+		if (span.textContent.trim() === "Chuyên viên") {
+			span.classList.add("cv");
+		}
+		if (span.textContent.trim() === "Người dùng") {
+			span.classList.add("nd");
+		}
 	}
-  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+	var spanElements = document.querySelectorAll("#content main .table-data .order table tr td .status");
+
+	for (var i = 0; i < spanElements.length; i++) {
+		var span = spanElements[i];
+		if (span.textContent.trim() === "Waiting") {
+			span.classList.add("pending");
+		}
+		if (span.textContent.trim() === "Completed") {
+			span.classList.add("completed");
+		}
+	}
+});
   
 var content = document.getElementById("answ_stt");
 var stt_status = document.getElementById("stt_status");

@@ -14,6 +14,7 @@
 	<title>AdminHub</title>
 </head>
 <body>
+	@if(auth()->user()->role == 1)
 	@extends('Admin.sidebar')
     @section('admin')
 	
@@ -27,19 +28,64 @@
 						<li>
 							<p id="local_dash">User</p>
 							@if(session()->has('success.add-user'))
-							<h1>{{session('success.add-user')}}</h1>
+							<div class="popup" id="myPopup">
+								<span class="popup-content"><h1>{{session('success.add-user')}}</h1></span>
+								<button class="close" id="closePopup">Đóng</button>
+							</div>
+							<script>
+								document.getElementById("myPopup").style.display = "block";
+								document.getElementById("closePopup").addEventListener("click", function() {
+									document.getElementById("myPopup").style.display = "none";
+							});
+							</script>
 							@endif
 							@if(session()->has('success.update-user'))
-							<h1>{{session('success.update-user')}}</h1>
+							<div class="popup" id="myPopup">
+								<span class="popup-content"><h1>{{session('success.update-user')}}</h1></span>
+								<button class="close" id="closePopup">Đóng</button>
+							</div>
+							<script>
+								document.getElementById("myPopup").style.display = "block";
+								document.getElementById("closePopup").addEventListener("click", function() {
+									document.getElementById("myPopup").style.display = "none";
+							});
+							</script>
 							@endif
 							@if(session()->has('error.update-user'))
-							<h1>{{session('error.update-user')}}</h1>
+							<div class="popup" id="myPopup">
+								<span class="popup-content"><h1>{{session('error.update-user')}}</h1></span>
+								<button class="close" id="closePopup">Đóng</button>
+							</div>
+							<script>
+								document.getElementById("myPopup").style.display = "block";
+								document.getElementById("closePopup").addEventListener("click", function() {
+									document.getElementById("myPopup").style.display = "none";
+							});
+							</script>
 							@endif
 							@if(session()->has('success.delete-user'))
-							<h1>{{session('success.delete-user')}}</h1>
+							<div class="popup" id="myPopup">
+								<span class="popup-content"><h1><h1>{{session('success.delete-user')}}</h1></h1></span>
+								<button class="close" id="closePopup">Đóng</button>
+							</div>
+							<script>
+								document.getElementById("myPopup").style.display = "block";
+								document.getElementById("closePopup").addEventListener("click", function() {
+									document.getElementById("myPopup").style.display = "none";
+							});
+							</script>
 							@endif
 							@if(session()->has('error.delete-user'))
-							<h1>{{session('error.delete-user')}}</h1>
+							<div class="popup" id="myPopup">
+								<span class="popup-content"><h1><h1><h1>{{session('error.delete-user')}}</h1></h1></h1></span>
+								<button class="close" id="closePopup">Đóng</button>
+							</div>
+							<script>
+								document.getElementById("myPopup").style.display = "block";
+								document.getElementById("closePopup").addEventListener("click", function() {
+									document.getElementById("myPopup").style.display = "none";
+							});
+							</script>
 							@endif
 						</li>
 					</ul>
@@ -64,14 +110,14 @@
 							</tr>
 						</thead>
 						<tbody id="data_prd">
-							@foreach($users as $user)
+						@foreach($users as $user)
 							<tr>
 								<td>
 									<img src="{{asset($user->img_link)}}" style="margin-right: 20px;">
 									<p>{{$user->name}}</p>
 								</td>
 								<td>{{$user->email}}</td>
-								<td><span class="status">
+								<td><span class="user_role">
 								@if ($user->role == 1)
 									Quản lý
 								@elseif ($user->role == 2)
@@ -82,13 +128,14 @@
 									Người dùng
 								@endif
 								</span></td>
-								<td>
+								<td class="dlt_mt" style="margin-bottom: 20px;">
 									<a href="{{route('update.user',$user->id)}}" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></a>
 									<form action="{{route('delete.user',$user->id)}}" method = "POST">
 											@method('DELETE')
 											@csrf
-										<button type="submit"><i class="fa-solid fa-trash"></i></button>
+										<button class="delete_moithu" type="submit"><i class="fa-solid fa-trash"></i></button>
 										</form>
+						        </td>
 							</tr>
 							@endforeach
 							
@@ -97,14 +144,18 @@
 				</div>
 			</div>
 @endsection
-	
+	@else
+	<div class="thong_bao">
+	    <h1>Bạn không có quyền truy cập</h1>
+	</div>
+    @endif
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script>
-		$(document).ready(function () {
-    $('#tb').DataTable();
-		});
-	</script>
+	<script>$(document).ready(function () {
+    $.noConflict();
+    var table = $('#tb').DataTable();
+});</script>
+	
 </body>
 </html>

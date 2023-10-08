@@ -18,31 +18,31 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-        <a href="#" class="brand" onclick="dash();">
+        <a href="{{route('show.dashboard')}}" class="brand dashboard" onclick="dash();">
             <i class="fa-solid fa-hand-holding-medical"></i>
             <h3 class="title">AdminHub</h3>
         </a>
 		<ul class="side-menu top">
 			<li>
-				<a href="{{route('show.dashboard')}}" onclick="dash();">
+				<a href="{{route('show.dashboard')}}" onclick="dash();" class="dashboard">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="{{route('new.question')}}" onclick="newquest();">
+				<a href="{{route('new.question')}}" onclick="newquest();" class="new-question">
 					<i class='bx bxs-bell' ></i>
 					<span class="text">New Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="{{route('show.question')}}" onclick="quest();">
+				<a href="{{route('show.question')}}" onclick="quest();" class="question add-question answer update-question">
 					<i class='bx bx-message-rounded-detail'></i>
 					<span class="text">Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="{{route('show.user')}}" onclick="team();">
+				<a href="{{route('show.user')}}" onclick="team();" class="user update-user add-user">
 					<i class='bx bxs-group' ></i>
 					<span class="text">User</span>
 				</a>
@@ -50,19 +50,21 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
+				<a href="/" onclick="team();">
+					<i class="fa-solid fa-house"></i>
+					<span class="text">Xem Blog</span>
 				</a>
 			</li>
 			<li>
-			<form action="{{route('admin.logout')}}" method="POST">
-                            @csrf
-                            <button type = "submit" class="logout"><a href="#" class="logout">
-					<i class="fa-solid fa-right-from-bracket"></i>
-					<span class="text">Logout</span>
-				</a></button>
-                        </form>
+				<form action="{{route('admin.logout')}}" method="POST">
+					@csrf
+					<button type = "submit">
+						<a href="#" class="logout">
+							<i class="fa-solid fa-right-from-bracket"></i>
+							<span class="text">Logout</span>
+					    </a>
+					</button>
+				</form>
 			</li>
             <li>
                 <div class="hai">
@@ -117,17 +119,17 @@
 						</div>
 						<div class="logout_ab">
 						
-								<div class="lgf">
+							<div class="lgf">
 								<form action="{{route('admin.logout')}}" method="POST">
-                            @csrf
-                            <button type = "submit" class="logout"><a href="#" class="logout">
-							<i class='bx bx-log-out'></i>
-					<span class="text">Logout</span>
-				</a></button>
-                        </form>
-							
-							
-							
+									@csrf
+									<button type = "submit" class="logout">
+										<a href="#" class="logout">
+											<i class='bx bx-log-out'></i>
+											<span class="text text_logout">Logout</span>
+									    </a>
+									</button>
+								</form>
+						    </div>
 						</div>
 					</div>
 				</div>

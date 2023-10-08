@@ -66,12 +66,17 @@ nav .nav_main{
 }
 nav .nav_main .name a{
     text-decoration: none;
-    color: var(--dark);
+    color: #fff;
     font-size: 20px;
+}
+nav .nav_main .name a img{
+    width: 70px;
+    margin: auto;
 }
 
 
 main .board{
+    margin-left: 100px;
     align-items: center;
     display: flex;
     width: 100%;
@@ -105,7 +110,6 @@ main .board .left_log .img_left img{
     height: 500px;
 }
 main .board .right_log{
-    align-items: center;
     margin: auto;
     overflow: hidden;
     position: relative;
@@ -175,15 +179,27 @@ main .board .right_log .chosse .more .gg{
     border-radius: 100%;
     color: #fff;
 }
-main .board .right_log .login{
+/* main .board .right_log .login{
     display: none;
-}
+} */
 main .board .right_log .login .back{
+    margin: auto;
     margin-top: 20px;
     font-weight: bold;
     cursor: pointer;
     width: 90px;
     height: 25px;
+}
+main .board .right_log .login .quenmk a{
+    color: var(--red);
+}
+main .board .right_log .login .quenmk a:hover{
+    text-decoration: underline;
+}
+main .board .right_log .login .view_error{
+    height: 30px;
+    padding-top: 20px;
+    color: red;
 }
 main .board .right_log .login .login_inf{
     margin: 48px 0px 40px;
@@ -228,6 +244,7 @@ main .board .right_log .login .inp .sua input{
 }
 main .board .right_log .login .pass{
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 main .board .right_log .login .sub{
     margin-top: 40px;
@@ -244,9 +261,10 @@ main .board .right_log .login .sub .submit_form{
     height: 44px;
     padding: 0px 24px;
     border-radius: 6px;
-    background: rgb(217, 215, 215);
-    border: 1px solid rgb(244, 244, 244);
-    color: rgb(189, 188, 188);
+    background: rgb(255, 104, 0);
+    border: 1px solid rgb(255, 104, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 
@@ -339,51 +357,5 @@ main .board .right_log .register .sub .submit_form{
 
 
 
-main .board .right_log .login .view_error{
-    height: 30px;
-    padding-top: 20px;
-    color: red;
-}
-.quenmk{
-    margin-top: 10px;
-}
-.quenmk a{
-    color: var(--red);
-}
-.quenmk a:hover{
-    text-decoration: underline;
-}
-  
 
 
-
-
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px 2px #000000;
-  }
-  
-  .popup-content {
-    font-size: 18px;
-  }
-  
-  .close {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-  }
-  

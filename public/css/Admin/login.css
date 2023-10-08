@@ -181,11 +181,23 @@ main .board .right_log .chosse .more .gg{
     display: none;
 } */
 main .board .right_log .login .back{
+    margin: auto;
     margin-top: 20px;
     font-weight: bold;
     cursor: pointer;
     width: 90px;
     height: 25px;
+}
+main .board .right_log .login .quenmk a{
+    color: var(--red);
+}
+main .board .right_log .login .quenmk a:hover{
+    text-decoration: underline;
+}
+main .board .right_log .login .view_error{
+    height: 30px;
+    padding-top: 20px;
+    color: red;
 }
 main .board .right_log .login .login_inf{
     margin: 48px 0px 40px;
@@ -230,6 +242,7 @@ main .board .right_log .login .inp .sua input{
 }
 main .board .right_log .login .pass{
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 main .board .right_log .login .sub{
     margin-top: 40px;

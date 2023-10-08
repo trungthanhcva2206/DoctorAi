@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Question;
 use App\Models\Asked_question;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class QuesController extends Controller
@@ -32,11 +33,26 @@ class QuesController extends Controller
         $question = Question::find($id);
         return view('Admin/answer',compact('question'));
     }
-    public function answerPost(Request $request,$id){
+    public function answerPost(Request $request, $id)
+    {
         $question = Question::find($id);
         $question->answer = $request->answer;
         $question->user_id = Auth::user()->id;
         $question->save();
+
+        
+        $userIds = Asked_question::where('question_id', $question->id)->pluck('user_id')->toArray();
+
+    
+        $usersToNotify = User::whereIn('id', $userIds)->where('role', 0)->get();
+
+        foreach ($usersToNotify as $user) {
+            Mail::send("Client.sendMail", ['question' => $question->question, 'answer' => $request->answer], function ($message) use ($user) {
+                $message->to($user->email);
+                $message->subject("Trả lời câu hỏi");
+            });
+        }
+
         return redirect()->route('show.question')->with('success.answer', 'Sửa câu trả lời thành công.');
     }
     public function getUnansweredQuestionCount()

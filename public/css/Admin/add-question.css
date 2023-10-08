@@ -47,10 +47,41 @@ body {
 }
 
 
-
+.thong_bao{
+	width: 100%;
+	text-align: center;
+	color: red;
+	position: absolute;
+	align-items: center;
+	margin: auto;
+	margin-top: 100px;
+}
 
 
 /* SIDEBAR */
+#sidebar .side-menu li button{
+	width: calc(48px - (4px * 2));
+	transition: width .3s ease;
+	width: 100%;
+	height: 100%;
+	background: var(--light);
+	display: flex;
+	align-items: center;
+	border-radius: 48px;
+	font-size: 16px;
+	color: var(--dark);
+	white-space: nowrap;
+	overflow-x: hidden;
+	border: none;
+	width: 100%;
+}
+#sidebar .side-menu li button{
+	border: none;
+	width: 100%;
+}
+#sidebar .side-menu li form{
+	width: 100%;
+}
 #sidebar {
 	position: fixed;
 	top: 0;
@@ -752,7 +783,7 @@ body {
 	border: 1px solid;
 	margin-top: 10px;
 	border-radius: 20px;
-	height: 155px;
+	height: 255px;
 	padding: 10px;
 }
 #content main .view_or .main_view .quest_view textarea{
@@ -774,10 +805,13 @@ body {
 	font-size: 20px;
 	align-items: center;
 }
+#content nav .dropdown .text_logout{
+	color: #342E37;
+}
 #content main .view_or .main_view .quest_view .quest{
 	overflow-y: auto;
 	overflow-wrap: break-word;
-	height: 100px;
+	height: 150px;
 	width: 100%;
 	font-weight: initial;
 }
@@ -816,7 +850,7 @@ body {
 	padding-left: 5px;
 	padding-right: 5px;
 	width: 100%;
-	height: 80px;
+	height: 120px;
 	font-size: 18px;
 	resize: none;
 	outline: none;
@@ -826,10 +860,11 @@ body {
 	overflow-y: auto;
 	overflow-wrap: break-word;
 }
-#content main .view_or .main_view .answ_view .update{
-	margin-top: 10px;
+#content main .view_or .main_view form{
+	width: 100%;
 }
-#content main .view_or .main_view .answ_view button{
+#content main .view_or .main_view .update button{
+	margin-top: 10px;
 	border: none;
 	cursor: pointer;
 	padding: 10px;
@@ -838,8 +873,8 @@ body {
 	font-size: 15px;
 	color: var(--dark);
 	font-weight: bold;
-
 }
+
 
 /* MAIN */
 /* CONTENT */

@@ -98,21 +98,23 @@ function checkInputs() {
 const regemailInput = document.getElementById('reg_email');
 const regacc = document.getElementById('reg_acc');
 const regpasswordInput = document.getElementById('reg_pass');
+const regrepasswordInput = document.getElementById('reg_repass');
 const regnameInput = document.getElementById('reg_name');
 const regsubmitButton = document.getElementById('reg_submitButton');
 
 regemailInput.addEventListener('input', regcheckInputs);
-regacc.addEventListener('input', regcheckInputs);
 regpasswordInput.addEventListener('input', regcheckInputs);
 regnameInput.addEventListener('input', regcheckInputs);
+regrepasswordInput.addEventListener('input', regcheckInputs);
+
 
 function regcheckInputs() {
     const regemailValue = regemailInput.value;
-    const regaccValue = regacc.value;
     const regnameValue = regnameInput.value;
     const regpasswordValue = regpasswordInput.value;
+    const regrepasswordValue = regrepasswordInput.value;
 
-    if (regemailValue.length > 0 && regaccValue.length > 0 && regnameValue.length > 0 && regpasswordValue.length > 0) {
+    if (regrepasswordValue.length > 0 && regemailValue.length > 0 && regnameValue.length > 0 && regpasswordValue.length > 0) {
         // Đổi màu background-color của nút
         regsubmitButton.style.backgroundColor = 'rgb(255, 104, 0)';
         regsubmitButton.style.border = '1px solid rgb(255, 104, 0)';

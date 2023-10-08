@@ -46,9 +46,14 @@
 <main>
 			<div class="breadcrumb">
 				<ul>
-					<li><a href="/admin/dashboard">Home</a></li>
+					<li>@if($user->role==0)
+                        <a href="/chat">Home</a>
+                        @else
+                        <a href="/admin/dashboard">Home</a>
+                        @endif
+                    </li>
 					<li> / </li>
-					<li><a href="/admin/user-info">Account</a></li>
+					<li><a href="{{route('user.info')}}">Account</a></li>
 					<li> / </li>
 					<li>Change Password</li>
 				</ul>
@@ -63,9 +68,9 @@
 						<p>{{$user -> email}}</p>
 					</div>						
 					<ul>
-                        <li><a href="/admin/user-info" >Tài khoản <span>></span></a></li>
+                        <li><a href="{{route('user.info')}}" >Tài khoản <span>></span></a></li>
                         <li><a href="/change-password" class="active">Đổi mật khẩu <span>></span></a></li>
-                        <li><form action="{{route('admin.logout')}}" method="POST">
+                        <li><form action="{{route('client.logout')}}" method="POST">
                             @csrf
                             <button type = "submit" class="logout"><a href="#" class="logout">
 					<i class="fa-solid fa-right-from-bracket"></i>
