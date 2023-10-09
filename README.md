@@ -24,6 +24,9 @@ ChatBot trả lời các câu hỏi của người dùng trong lĩnh vực y h�
 
 Update lại 1 vài giao diện ở phần Admin.
 
+## V1.1.1
+- Chỉnh sửa lại 1 vài giao diện và chức năng.
+
 # Setup
 
 - Tải ChatBot tại: https://github.com/trungthanhcva2206/DoctorAi.git.
