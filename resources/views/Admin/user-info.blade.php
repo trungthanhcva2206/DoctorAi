@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        
+.error-message {
+    background-color: #ffcccc; 
+    color: #ff0000; 
+    padding: 10px; 
+    border: 1px solid #ff0000; 
+    border-radius: 5px; 
+    margin-bottom: 10px;
+}
+
+    </style>
 </head>
 
 <body>
@@ -64,10 +76,22 @@
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" id="fname" name="fname" value="{{$user->name}}">
+                                @if(session('error'))
+                                    <div class="error-message">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" id="email" name="email" value="{{$user->email}}">
+                                @if(session('error'))
+                                    <div class="error-message">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="form-group">

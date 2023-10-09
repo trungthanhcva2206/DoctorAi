@@ -14,6 +14,18 @@ class UserInfo extends Controller
     public function updateInfo(Request $request){
         $user = Auth::user();
 
+        if ($request->input('fname') === null && $request->input('email') === null) {
+            return redirect()->back()->with('error', 'Tên và email không được để trống!');
+        }
+    
+        if ($request->input('fname') === null) {
+            return redirect()->back()->with('error', 'Tên không được để trống!');
+        }
+    
+        if ($request->input('email') === null) {
+            return redirect()->back()->with('error', 'Email không được để trống!');
+        }
+    
         $user->name = $request->input('fname');
         $user->email = $request->input('email');
         $user->save();

@@ -47,9 +47,13 @@
 						</thead>
 						@foreach($questions as $ques)
 							<tr>
-								<td>
+								<td>@if(empty($ques->user_info))
+									<img src="{{asset('img/user.png')}}">
+									<p>Khách</p>
+									@else
 									<img src="{{asset($ques->user_info->img_link)}}">
 									<p>{{$ques->user_info->name}}</p>
+									@endif
 								</td>
 								<td>{{$ques->created_at->format('d-m-Y')}}</td>
 								<td class="limit-text">{{$ques->question}}</td>

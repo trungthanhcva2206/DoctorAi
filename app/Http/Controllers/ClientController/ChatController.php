@@ -29,7 +29,7 @@ class ChatController extends Controller
             $newQuestion = new Question();
             $newQuestion->question = $question;
             $newQuestion->answer = null;
-            $newQuestion->user_id = Auth::user()->id;
+            $newQuestion->user_id = NULL;
             $newQuestion->save();
             $answer = $newQuestion;
         }
