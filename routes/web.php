@@ -50,7 +50,7 @@ Route::patch('/admin/update-question/{id}', [AdminController\QuesController::cla
 Route::get('/get-unanswered-question-count', [AdminController\QuesController::class, 'getUnansweredQuestionCount'])->middleware('auth');
 Route::get('/admin/new-question', [AdminController\QuesController::class, 'newQuestion'])->middleware('auth')->name('new.question');
 Route::delete('/admin/delete-question/{id}', [AdminController\QuesController::class, 'deleteQuestion'])->middleware('auth')->name('delete.question');
-
+Route::patch('/admin/status/{id}', [AdminController\QuesController::class, 'status'])->middleware('auth')->name('status');
 
 
 Route::get('/client-login', [ClientController\LoginController::class, 'showLogin'])->name('show.client.login');

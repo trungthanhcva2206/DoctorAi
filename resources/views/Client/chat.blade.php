@@ -129,7 +129,7 @@
             <div class="chat_input">
                 <form action="{{route('chat.post')}}" method="post" id="chat-form">
                     @csrf
-                    <input type="text" placeholder="Vì là bản thử nghiệm nên vui lòng nhập 'Triệu chứng bệnh + tên bệnh' hoặc 'Phương pháp điều trị bệnh + tên bệnh'" name="question">
+                    <input type="text"  name="question">
                     <button type="submit" title="Send message">
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
@@ -166,7 +166,7 @@ $(document).ready(function () {
 
                 // Tạo và thêm câu trả lời vào `.chatbox` với lớp "message friend_msg"
                 const answerElement = $('<div class="message friend_msg">')
-                    .html('<p>' + response.answer + '</p>');
+                    .html('<p>' + response + '</p>');
                 chatbox.append(answerElement);
 
                 // Xóa giá trị trong input

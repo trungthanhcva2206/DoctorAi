@@ -81,7 +81,10 @@
 							</div>
 						</div>
 						<div class="update">
-							<button type="submit">UPDATE</button>
+							<button type="submit">Sửa</button>
+						</div>
+						<div class="update">
+							<button type="submit" formaction = "{{route('status',$question->id)}}">Duyệt</button>
 						</div>
 					</form>
 				</div>

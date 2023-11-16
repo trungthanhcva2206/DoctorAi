@@ -137,7 +137,7 @@
 								<td>{{$ques->created_at->format('d-m-Y')}}</td>
 								<td class="limit-text">{{$ques->question}}</td>
 								<td><span class="status">
-                                    @if (!empty($ques->answer))
+                                    @if ($ques->status == 1)
                                         Completed
                                     @else
                                         Waiting

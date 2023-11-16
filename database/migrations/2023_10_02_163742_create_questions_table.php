@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->text("question");
             $table->text('answer')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedTinyInteger('status');
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class QuesController extends Controller
         return view('Admin/question',compact('questions'));
     }
     public function newQuestion(){
-        $questions = Question::whereNull('answer')->get();
+        $questions = Question::where('status', 0)->get();
         foreach ($questions as $question) {
             $user = User::find($question->user_id);
             $question->user_info = $user;
@@ -38,27 +38,23 @@ class QuesController extends Controller
         $question = Question::find($id);
         $question->answer = $request->answer;
         $question->user_id = Auth::user()->id;
+        $question->status = 1;
         $question->save();
-
-        
-        $userIds = Asked_question::where('question_id', $question->id)->pluck('user_id')->toArray();
-
-    
-        $usersToNotify = User::whereIn('id', $userIds)->where('role', 0)->get();
-
-        foreach ($usersToNotify as $user) {
-            Mail::send("Client.sendMail", ['question' => $question->question, 'answer' => $request->answer], function ($message) use ($user) {
-                $message->to($user->email);
-                $message->subject("Trả lời câu hỏi");
-            });
-        }
-
         return redirect()->route('show.question')->with('success.answer', 'Sửa câu trả lời thành công.');
+    }
+    public function status(Request $request, $id)
+    {
+        $question = Question::find($id);
+        $question->user_id = Auth::user()->id;
+        $question->status = 1;
+        $question->save();
+        return redirect()->route('show.question')->with('success.answer', 'Duyệt câu trả lời thành công.');
     }
     public function getUnansweredQuestionCount()
     {
         
-        $unansweredCount = Question::whereNull('answer')->count();
+        $unansweredCount = Question::where('status', 0)->count();
+
         return response()->json(['unansweredCount' => $unansweredCount]);
     }
     public function addQuestion(){
@@ -75,7 +71,8 @@ class QuesController extends Controller
         ], $messages);
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
-        
+        $question->answer = null;
+        $question->status = 0;
         $question->save();
         return redirect()->route('show.question')->with('success.add-question', 'Thêm câu hỏi thành công.');;
     }

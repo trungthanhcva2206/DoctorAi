@@ -8,6 +8,7 @@ use App\Models\Asked_Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use OpenAI\Laravel\Facades\OpenAI;
 
 class ChatController extends Controller
 {
@@ -24,25 +25,45 @@ class ChatController extends Controller
         $question = strtolower($request->question);
        
         $answer = Question::whereRaw('LOWER(question) = ?', [$question])->first();
-        
         if (!$answer) {
+            $result = OpenAI::completions()->create([
+                'max_tokens' => 100,
+                'model' => 'text-davinci-003',
+                'prompt' => $request->question
+    
+            ]);
+    
+            $response = array_reduce(
+                $result->toArray()['choices'],
+                fn(string $result, array $choice) => $result . $choice['text'], ""
+            );
             $newQuestion = new Question();
             $newQuestion->question = $question;
-            $newQuestion->answer = null;
+            $newQuestion->answer = $response;
+            $newQuestion->status = 0;
             $newQuestion->user_id = NULL;
             $newQuestion->save();
-            $answer = $newQuestion;
+            $response = $response . "(Thông tin này chưa được xác thực bởi chuyên gia)";
+            $asked = new Asked_question;
+            $asked->user_id = Auth::user()->id;
+            $asked->question_id = $newQuestion->id;
+            $asked->save();
+    
+            return $response;
+        }
+        else {
+            $response = $answer->answer;
+            if($answer->status == 0){
+                $response = $answer->answer. "(Thông tin này chưa được xác thực bởi chuyên gia)";
+            }
+           
+            $asked = new Asked_question;
+            $asked->user_id = Auth::user()->id;
+            $asked->question_id = $answer->id;
+            $asked->save();
+            return $response;
         }
         
-        $asked = new Asked_question;
-        $asked->user_id = Auth::user()->id;
-        $asked->question_id = $answer->id;
-        $asked->save();
-    
-        
-        $responseAnswer = $answer->answer ? $answer->answer : "Chúng tôi sẽ trả lời vào Gmail của bạn sau.";
-    
-        return response()->json(['answer' => $responseAnswer]);
     }
     public function askedQuestion($id) {
         $question = Question::find($id);
