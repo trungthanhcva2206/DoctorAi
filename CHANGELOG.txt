@@ -17,3 +17,6 @@ Update lại 1 vài giao diện ở phần Admin.
 
 DoctorAi V1.1.1
 - Chỉnh sửa lại 1 vài giao diện và chức năng.
+
+DoctorAi V1.1.2
+- Tích hợp chatGPT.

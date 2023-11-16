@@ -27,6 +27,8 @@ Update lại 1 vài giao diện ở phần Admin.
 ## V1.1.1
 - Chỉnh sửa lại 1 vài giao diện và chức năng.
 
+## V1.1.2
+- Tích hợp chatGPT.
 # Setup
 
 - Tải ChatBot tại: https://github.com/trungthanhcva2206/DoctorAi.git.
